@@ -7,8 +7,8 @@ folder removes every trace of it.
 ## macOS
 
 1. Get the app: download the zip from the
-   [latest release](https://github.com/TomyCabrer/AeroBO/releases/latest)
-   and unzip it, or `git clone https://github.com/TomyCabrer/AeroBO.git`.
+   [latest release](https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/releases/latest)
+   and unzip it, or `git clone https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation.git`.
 2. Double-click **`AeroBO.command`**.
 
 The first run takes a few minutes and about 880 MB: it fetches `uv`, builds a
@@ -30,8 +30,8 @@ chmod +x AeroBO.command AeroBO.sh installer/*.sh
 ## Windows
 
 1. Get the app: download the zip from the
-   [latest release](https://github.com/TomyCabrer/AeroBO/releases/latest)
-   and unzip it, or `git clone https://github.com/TomyCabrer/AeroBO.git`.
+   [latest release](https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/releases/latest)
+   and unzip it, or `git clone https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation.git`.
 2. Double-click **`AeroBO.bat`**.
 
 SmartScreen may warn about an unrecognised app: **More info ▸ Run anyway**.
@@ -51,11 +51,11 @@ browser app by design.
 ## One line, if you prefer
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TomyCabrer/AeroBO/main/installer/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/main/installer/install.sh | bash
 ```
 
 ```powershell
-irm https://raw.githubusercontent.com/TomyCabrer/AeroBO/main/installer/install.ps1 | iex
+irm https://raw.githubusercontent.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/main/installer/install.ps1 | iex
 ```
 
 Both put the app in `~/AeroBO` and start it. Running the same line again

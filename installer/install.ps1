@@ -1,6 +1,6 @@
 # Get AeroBO onto this machine and start it. Windows.
 #
-#   irm https://raw.githubusercontent.com/TomyCabrer/AeroBO/main/installer/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/main/installer/install.ps1 | iex
 #
 # Downloads the app into %USERPROFILE%\AeroBO and runs AeroBO.bat, which
 # builds its own private Python environment there. Nothing is installed
@@ -8,7 +8,7 @@
 
 $ErrorActionPreference = "Stop"
 
-$Repo   = if ($env:AEROBO_REPO)   { $env:AEROBO_REPO }   else { "https://github.com/TomyCabrer/AeroBO" }
+$Repo   = if ($env:AEROBO_REPO)   { $env:AEROBO_REPO }   else { "https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation" }
 $Dir    = if ($env:AEROBO_DIR)    { $env:AEROBO_DIR }    else { Join-Path $HOME "AeroBO" }
 $Branch = if ($env:AEROBO_BRANCH) { $env:AEROBO_BRANCH } else { "main" }
 

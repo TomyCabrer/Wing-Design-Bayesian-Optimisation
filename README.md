@@ -45,24 +45,24 @@ Three ways in. Every one of them ends the same way: a folder with a launcher
 in it, and nothing to install first — **not even Python**.
 
 **1 · Download a release** — the simplest.
-[**Releases ▸ latest ▸ `AeroBO-<version>.zip`**](https://github.com/TomyCabrer/AeroBO/releases/latest), unzip it, then double-click
+[**Releases ▸ latest ▸ `AeroBO-<version>.zip`**](https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/releases/latest), unzip it, then double-click
 **`AeroBO.command`** (macOS) · **`AeroBO.bat`** (Windows) · run `./AeroBO.sh` (Linux).
 
 **2 · Clone it** — if you want updates to be a `git pull`.
 
 ```bash
-git clone https://github.com/TomyCabrer/AeroBO.git
+git clone https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation.git
 cd AeroBO && ./AeroBO.command        # macOS · AeroBO.bat on Windows · ./AeroBO.sh on Linux
 ```
 
 **3 · One line** — clones into `~/AeroBO` and starts it.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TomyCabrer/AeroBO/main/installer/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/main/installer/install.sh | bash
 ```
 
 ```powershell
-irm https://raw.githubusercontent.com/TomyCabrer/AeroBO/main/installer/install.ps1 | iex
+irm https://raw.githubusercontent.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/main/installer/install.ps1 | iex
 ```
 
 The first start takes a few minutes: the launcher fetches its own Python and

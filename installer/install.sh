@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Get AeroBO onto this machine and start it. macOS and Linux.
 #
-#   curl -fsSL https://raw.githubusercontent.com/TomyCabrer/AeroBO/main/installer/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/main/installer/install.sh | bash
 #
 # Downloads the app into ~/AeroBO (override with AEROBO_DIR=...) and runs the
 # launcher, which builds its own private Python environment there. Nothing is
@@ -12,7 +12,7 @@
 
 set -euo pipefail
 
-REPO="${AEROBO_REPO:-https://github.com/TomyCabrer/AeroBO}"
+REPO="${AEROBO_REPO:-https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation}"
 DIR="${AEROBO_DIR:-$HOME/AeroBO}"
 BRANCH="${AEROBO_BRANCH:-main}"
 
