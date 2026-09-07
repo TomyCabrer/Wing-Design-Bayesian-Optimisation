@@ -36,8 +36,8 @@ bo = ["torch", "botorch", "gpytorch"]
 dev = ["pytest"]
 
 [project.urls]
-Homepage = "https://github.com/TomyCabrer/AeroBO"
-Issues = "https://github.com/TomyCabrer/AeroBO/issues"
+Homepage = "https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation"
+Issues = "https://github.com/TomyCabrer/Wing-Design-Bayesian-Optimisation/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
