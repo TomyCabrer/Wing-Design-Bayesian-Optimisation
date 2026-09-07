@@ -179,7 +179,7 @@ files, and a script that rebuilds the whole thing natively in OpenVSP:
 <tr>
 <td align="center"><sub>wing + T-tail, meshed</sub></td>
 <td align="center"><sub>endplates + V-tail</sub></td>
-<td align="center"><sub>a blended tip device</sub></td>
+<td align="center"><sub>a blended car wing</sub></td>
 </tr>
 <tr>
 <td><img src="docs/media/cad-tandem.png" alt="A tandem pair"></td>
