@@ -177,8 +177,8 @@ files, and a script that rebuilds the whole thing natively in OpenVSP:
 <td width="33%"><img src="docs/media/cad-anhedral.png" alt="A wing whose tip is a blended anhedral device"></td>
 </tr>
 <tr>
-<td align="center"><sub>wing + T-tail, meshed</sub></td>
-<td align="center"><sub>endplates + V-tail</sub></td>
+<td align="center"><sub> conventional wing</sub></td>
+<td align="center"><sub> wingtips + V-tail</sub></td>
 <td align="center"><sub>a blended car wing</sub></td>
 </tr>
 <tr>
