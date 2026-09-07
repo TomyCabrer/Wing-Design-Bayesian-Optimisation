@@ -1,0 +1,1319 @@
+{
+ "version": 1,
+ "measured": "2026-08-05",
+ "n_runs": 1260,
+ "cases": 19,
+ "machine": "arm64 \u00b7 Darwin 24.5.0",
+ "note": "fitted by aerobo.experiments.budget_analysis from aerobo.experiments.budget_study",
+ "kinds": {
+  "wing": {
+   "budget_mode": "law",
+   "seconds": {
+    "quick": 300,
+    "balanced": 900,
+    "thorough": 2700
+   },
+   "seconds_measured": false,
+   "method": {
+    "optimiser": "bo",
+    "acqf": "ucb",
+    "label": "bo-ucb",
+    "mean_rank": 1.63,
+    "runners_up": [
+     {
+      "method": "bo-logei",
+      "mean_rank": 1.9
+     },
+     {
+      "method": "bo-qmes",
+      "mean_rank": 2.97
+     },
+     {
+      "method": "gradient",
+      "mean_rank": 4.73
+     }
+    ],
+    "win_rate": 0.59,
+    "decisive": false,
+    "tied_with": [
+     "bo-logei"
+    ],
+    "stability": {
+     "draws": 400,
+     "winner": "bo-ucb",
+     "win_rate": 0.59,
+     "decisive": false,
+     "tied_with": [
+      "bo-logei"
+     ],
+     "rates": {
+      "bo-ucb": 0.59,
+      "bo-logei": 0.41
+     },
+     "mean_rank": {
+      "bo-ucb": 1.63,
+      "bo-logei": 1.9,
+      "bo-qmes": 2.97,
+      "gradient": 4.73,
+      "sobol": 5.13,
+      "ga": 5.23,
+      "random": 6.4
+     }
+    }
+   },
+   "method_constrained": {
+    "optimiser": "bo",
+    "acqf": "logcei",
+    "label": "bo-logcei",
+    "mean_rank": 1.2,
+    "runners_up": [
+     {
+      "method": "slsqp",
+      "mean_rank": 3.07
+     },
+     {
+      "method": "ga",
+      "mean_rank": 3.67
+     },
+     {
+      "method": "sobol",
+      "mean_rank": 3.82
+     }
+    ],
+    "win_rate": 1.0,
+    "decisive": true,
+    "tied_with": [],
+    "stability": {
+     "draws": 400,
+     "winner": "bo-logcei",
+     "win_rate": 1.0,
+     "decisive": true,
+     "tied_with": [],
+     "rates": {
+      "bo-logcei": 1.0
+     },
+     "mean_rank": {
+      "bo-logcei": 1.2,
+      "slsqp": 3.02,
+      "ga": 3.67,
+      "sobol": 3.82,
+      "penalty": 4.6,
+      "random": 4.69
+     }
+    }
+   },
+   "law": {
+    "0.9": {
+     "intercept": 10.03,
+     "per_dim": 2.22,
+     "rms_resid": 8.0,
+     "n_cases": 13,
+     "max_measured": 47,
+     "points": [
+      [
+       6,
+       22.5
+      ],
+      [
+       13,
+       37.0
+      ],
+      [
+       6,
+       23.5
+      ],
+      [
+       8,
+       44.0
+      ],
+      [
+       10,
+       24.5
+      ],
+      [
+       14,
+       26.5
+      ],
+      [
+       5,
+       19.0
+      ],
+      [
+       10,
+       43.0
+      ],
+      [
+       12,
+       47.0
+      ],
+      [
+       3,
+       13.0
+      ],
+      [
+       5,
+       16.0
+      ],
+      [
+       5,
+       17.5
+      ],
+      [
+       7,
+       28.0
+      ]
+     ]
+    },
+    "0.95": {
+     "intercept": 9.61,
+     "per_dim": 3.08,
+     "rms_resid": 10.7,
+     "n_cases": 13,
+     "max_measured": 64,
+     "points": [
+      [
+       6,
+       24.0
+      ],
+      [
+       13,
+       45.5
+      ],
+      [
+       6,
+       27.0
+      ],
+      [
+       8,
+       54.0
+      ],
+      [
+       10,
+       27.5
+      ],
+      [
+       14,
+       35.5
+      ],
+      [
+       5,
+       24.0
+      ],
+      [
+       10,
+       55.5
+      ],
+      [
+       12,
+       64.0
+      ],
+      [
+       3,
+       17.0
+      ],
+      [
+       5,
+       23.0
+      ],
+      [
+       5,
+       18.0
+      ],
+      [
+       7,
+       30.5
+      ]
+     ]
+    },
+    "0.99": {
+     "intercept": 2.62,
+     "per_dim": 5.97,
+     "rms_resid": 11.9,
+     "n_cases": 13,
+     "max_measured": 91,
+     "points": [
+      [
+       6,
+       51.0
+      ],
+      [
+       13,
+       83.0
+      ],
+      [
+       6,
+       32.0
+      ],
+      [
+       8,
+       63.5
+      ],
+      [
+       10,
+       55.5
+      ],
+      [
+       14,
+       61.0
+      ],
+      [
+       5,
+       28.5
+      ],
+      [
+       10,
+       80.5
+      ],
+      [
+       12,
+       91.0
+      ],
+      [
+       3,
+       19.0
+      ],
+      [
+       5,
+       28.0
+      ],
+      [
+       5,
+       27.0
+      ],
+      [
+       7,
+       34.5
+      ]
+     ]
+    },
+    "0.999": {
+     "intercept": -33.04,
+     "per_dim": 14.78,
+     "rms_resid": 12.9,
+     "n_cases": 8,
+     "max_measured": 155,
+     "points": [
+      [
+       6,
+       62.0
+      ],
+      [
+       6,
+       61.0
+      ],
+      [
+       5,
+       36.5
+      ],
+      [
+       12,
+       155.0
+      ],
+      [
+       3,
+       23.0
+      ],
+      [
+       5,
+       43.5
+      ],
+      [
+       5,
+       40.0
+      ],
+      [
+       7,
+       39.0
+      ]
+     ]
+    }
+   },
+   "objective_factor": {
+    "composite": 1.0,
+    "measured": false,
+    "n_pairs": 0,
+    "pairs": [],
+    "ratio": null
+   },
+   "n_init": {
+    "per_dim": 0.5,
+    "min": 4,
+    "max": 16,
+    "measured": true,
+    "n_cases": 15,
+    "mean_rank": {
+     "0.5": 1.0,
+     "1.0": 2.25,
+     "2.0": 2.88,
+     "4.0": 4.25
+    },
+    "seen_in": {
+     "0.5": 5,
+     "0.6": 2,
+     "0.7": 1,
+     "1.0": 8,
+     "1.1": 1,
+     "1.3": 1,
+     "1.6": 1,
+     "2.0": 8,
+     "4.0": 8
+    },
+    "constrained": {
+     "per_dim": 1.0,
+     "min": 8,
+     "max": 48,
+     "measured": true,
+     "n_cases": 1,
+     "seeds": 3,
+     "source": "scripts/feasibility_guide_study.py (the reported wing+tail box)",
+     "why": "a constrained initial design decides whether the run ever sees a FEASIBLE point, and a run that does not see one rides a box corner for the rest of its budget (optimize.feasible). On the reported 20-D box, 4.7 % of draws fly: 0.5 x dim (10 points) returned NOTHING on 2 of 3 seeds (0/0/12 feasible evaluations of 72) while dim + 1 (21 points) returned a design on 3 of 3 (28/5/31). One case, three seeds -- a rule about the REGIME (a seed smaller than the dimension on a mostly-refused box is blind), not a tuned constant. The V3 shell's screened initial design (bo_feasibility) attacks the same failure from the other side and makes this survivable rather than unnecessary."
+    }
+   },
+   "restarts": 1,
+   "restarts_evidence": {
+    "k": 1,
+    "measured": true,
+    "compared": {
+     "k1": 0.9481,
+     "k2": 0.8969,
+     "k4": 0.7607
+    },
+    "stability": {
+     "draws": 400,
+     "point_winner": "k1",
+     "stable_winner": "k1",
+     "win_rate": {
+      "k1": 1.0,
+      "k2": 0.0,
+      "k4": 0.0
+     },
+     "compared": {
+      "k1": 0.9481,
+      "k2": 0.8969,
+      "k4": 0.7607
+     },
+     "n_groups": {
+      "k1": 8,
+      "k2": 4,
+      "k4": 2
+     }
+    }
+   },
+   "stop": {
+    "patience": 40,
+    "tol": 0.002,
+    "measured": true,
+    "median_frac_of_long_budget": 0.453,
+    "median_progress": 0.9981,
+    "p10_progress": 0.8849,
+    "missed_95_rate": 0.028,
+    "miss_budget": 0.03
+   },
+   "cost": {
+    "per_eval_s": 0.001978125,
+    "measured": true,
+    "serial": true,
+    "cached_solver": false,
+    "n_rows": 72,
+    "overhead": {
+     "bo": {
+      "a0": -0.21712070833027722,
+      "a1": 0.058362619297730955,
+      "b0": -0.08841336179119934,
+      "b1": 0.3006998819858863,
+      "n_points": 24
+     },
+     "ga": {
+      "a0": -0.000622870506687903,
+      "a1": 0.0001311265108688255,
+      "b0": 0.0010603473230050256,
+      "b1": -0.00024591403961921445,
+      "n_points": 24
+     }
+    }
+   },
+   "budget_clamp": [
+    12,
+    350
+   ],
+   "refusal": {
+    "modes": [
+     {
+      "mode": "worst",
+      "n_cases": 3,
+      "mean_delta_p": 0.1194,
+      "median_delta_p": 0.1694,
+      "n_better": 3,
+      "wins": 20,
+      "pairs": 24,
+      "sign_p": 0.001544,
+      "per_case": {
+       "aircraft6": {
+        "delta_p": 0.0049,
+        "wins": "4/8",
+        "sign_p": 1.0,
+        "median_gain_pct": 0.0
+       },
+       "car10_endplate": {
+        "delta_p": 0.1839,
+        "wins": "8/8",
+        "sign_p": 0.00781,
+        "median_gain_pct": 12.33
+       },
+       "car7": {
+        "delta_p": 0.1694,
+        "wins": "8/8",
+        "sign_p": 0.00781,
+        "median_gain_pct": 7.08
+       }
+      }
+     },
+     {
+      "mode": "worst_margin",
+      "n_cases": 3,
+      "mean_delta_p": 0.0902,
+      "median_delta_p": 0.1209,
+      "n_better": 3,
+      "wins": 20,
+      "pairs": 24,
+      "sign_p": 0.001544,
+      "per_case": {
+       "aircraft6": {
+        "delta_p": 0.0053,
+        "wins": "4/8",
+        "sign_p": 1.0,
+        "median_gain_pct": 0.01
+       },
+       "car10_endplate": {
+        "delta_p": 0.1209,
+        "wins": "8/8",
+        "sign_p": 0.00781,
+        "median_gain_pct": 9.08
+       },
+       "car7": {
+        "delta_p": 0.1443,
+        "wins": "8/8",
+        "sign_p": 0.00781,
+        "median_gain_pct": 8.56
+       }
+      }
+     }
+    ],
+    "adopt": "worst",
+    "min_gain": 0.02,
+    "max_p": 0.05,
+    "n_cases": 3,
+    "reproducible_control": {
+     "aircraft6": false,
+     "car7": false
+    },
+    "why": "worst: 20/24 seed pairs better (sign test p=0.001544), 3/3 cases, mean progress +0.119"
+   }
+  },
+  "airfoil": {
+   "budget_mode": "time",
+   "seconds": {
+    "quick": 495,
+    "balanced": 745,
+    "thorough": 1458
+   },
+   "seconds_measured": true,
+   "method": {
+    "optimiser": "bo",
+    "acqf": "logcei",
+    "label": "bo-logcei",
+    "win_rate": 0.823,
+    "decisive": false,
+    "tied_with": [
+     "bo-logcei"
+    ],
+    "stability": {
+     "draws": 400,
+     "winner": "ga",
+     "win_rate": 0.823,
+     "decisive": false,
+     "tied_with": [
+      "bo-logcei"
+     ],
+     "rates": {
+      "ga": 0.823,
+      "bo-logcei": 0.133,
+      "random": 0.035,
+      "sobol": 0.01
+     },
+     "mean_rank": {
+      "ga": 1.6,
+      "bo-logcei": 2.45,
+      "random": 3.0,
+      "sobol": 3.05,
+      "slsqp": 4.95,
+      "penalty": 5.95
+     }
+    },
+    "under_adopted_refusal": {
+     "point_winner": "ga",
+     "adopted_mode": "worst",
+     "wins": 18,
+     "pairs": 20,
+     "sign_p": 0.000402,
+     "cases_better": 4,
+     "n_cases": 4,
+     "per_case": {
+      "sec10_twist1": {
+       "wins": "5/5",
+       "median_control": 40.500606,
+       "median_adopted": 42.476161
+      },
+      "sec13_twist2_chord2": {
+       "wins": "4/5",
+       "median_control": 40.02989,
+       "median_adopted": 41.996985
+      },
+      "sec8_cd": {
+       "wins": "4/5",
+       "median_control": -0.005187,
+       "median_adopted": -0.004676
+      },
+      "sec8_composite": {
+       "wins": "5/5",
+       "median_control": 69.76596,
+       "median_adopted": 74.221602
+      }
+     },
+     "switch": true,
+     "winner": "bo-logcei",
+     "why": "under the adopted 'worst' refusal policy, BO beats ga on 18/20 seed pairs (sign test p=0.0004025), 4/4 cases"
+    },
+    "superseded_point_winner": "ga",
+    "why_switched": "under the adopted 'worst' refusal policy, BO beats ga on 18/20 seed pairs (sign test p=0.0004025), 4/4 cases",
+    "point_ranking": {
+     "ranked_on": "sentinel",
+     "winner": "ga",
+     "mean_rank": 1.6,
+     "runners_up": [
+      {
+       "method": "bo-logcei",
+       "mean_rank": 2.45
+      },
+      {
+       "method": "random",
+       "mean_rank": 3.0
+      },
+      {
+       "method": "sobol",
+       "mean_rank": 3.05
+      }
+     ]
+    },
+    "mean_rank": null,
+    "runners_up": [
+     {
+      "method": "ga",
+      "mean_rank": 1.6
+     }
+    ]
+   },
+   "method_constrained": {
+    "optimiser": "bo",
+    "acqf": "logcei",
+    "label": "bo-logcei",
+    "win_rate": 0.823,
+    "decisive": false,
+    "tied_with": [
+     "bo-logcei"
+    ],
+    "stability": {
+     "draws": 400,
+     "winner": "ga",
+     "win_rate": 0.823,
+     "decisive": false,
+     "tied_with": [
+      "bo-logcei"
+     ],
+     "rates": {
+      "ga": 0.823,
+      "bo-logcei": 0.133,
+      "random": 0.035,
+      "sobol": 0.01
+     },
+     "mean_rank": {
+      "ga": 1.6,
+      "bo-logcei": 2.45,
+      "random": 3.0,
+      "sobol": 3.05,
+      "slsqp": 4.95,
+      "penalty": 5.95
+     }
+    },
+    "under_adopted_refusal": {
+     "point_winner": "ga",
+     "adopted_mode": "worst",
+     "wins": 18,
+     "pairs": 20,
+     "sign_p": 0.000402,
+     "cases_better": 4,
+     "n_cases": 4,
+     "per_case": {
+      "sec10_twist1": {
+       "wins": "5/5",
+       "median_control": 40.500606,
+       "median_adopted": 42.476161
+      },
+      "sec13_twist2_chord2": {
+       "wins": "4/5",
+       "median_control": 40.02989,
+       "median_adopted": 41.996985
+      },
+      "sec8_cd": {
+       "wins": "4/5",
+       "median_control": -0.005187,
+       "median_adopted": -0.004676
+      },
+      "sec8_composite": {
+       "wins": "5/5",
+       "median_control": 69.76596,
+       "median_adopted": 74.221602
+      }
+     },
+     "switch": true,
+     "winner": "bo-logcei",
+     "why": "under the adopted 'worst' refusal policy, BO beats ga on 18/20 seed pairs (sign test p=0.0004025), 4/4 cases"
+    },
+    "superseded_point_winner": "ga",
+    "why_switched": "under the adopted 'worst' refusal policy, BO beats ga on 18/20 seed pairs (sign test p=0.0004025), 4/4 cases",
+    "point_ranking": {
+     "ranked_on": "sentinel",
+     "winner": "ga",
+     "mean_rank": 1.6,
+     "runners_up": [
+      {
+       "method": "bo-logcei",
+       "mean_rank": 2.45
+      },
+      {
+       "method": "random",
+       "mean_rank": 3.0
+      },
+      {
+       "method": "sobol",
+       "mean_rank": 3.05
+      }
+     ]
+    },
+    "mean_rank": null,
+    "runners_up": [
+     {
+      "method": "ga",
+      "mean_rank": 1.6
+     }
+    ]
+   },
+   "law": {},
+   "objective_factor": {
+    "composite": 1.0,
+    "measured": false,
+    "n_pairs": 0,
+    "pairs": [],
+    "ratio": null
+   },
+   "n_init": {
+    "per_dim": 0.5,
+    "min": 4,
+    "max": 16,
+    "measured": true,
+    "n_cases": 3,
+    "source": "section_time split arms",
+    "why": "4 initial points (0.5x the design vector) leads on mean progress over the deciding budgets, measured on sec8_composite over 5 seeds against 2 other seed sizes (4, 16, 48, best first)"
+   },
+   "restarts": 1,
+   "restarts_evidence": {
+    "k": 1,
+    "measured": true,
+    "compared": {
+     "k1": 0.6307,
+     "k2": 0.5958,
+     "k4": 0.5984
+    },
+    "stability": {
+     "draws": 400,
+     "point_winner": "k1",
+     "stable_winner": "k1",
+     "win_rate": {
+      "k1": 0.975,
+      "k2": 0.025,
+      "k4": 0.0
+     },
+     "compared": {
+      "k1": 0.6307,
+      "k2": 0.5958,
+      "k4": 0.5984
+     },
+     "n_groups": {
+      "k1": 5,
+      "k2": 2,
+      "k4": 1
+     }
+    }
+   },
+   "stop": {
+    "patience": null,
+    "tol": null,
+    "measured": true,
+    "reason": "no rule stayed inside the 3% miss budget \u2014 the best available still misses 95 % on 5% of runs, so this class ships no stop rule",
+    "best_available": {
+     "patience": 60,
+     "tol": 0.02,
+     "median_progress": 0.915,
+     "p10_progress": 0.8722,
+     "missed_95_rate": 0.05
+    },
+    "miss_budget": 0.03
+   },
+   "cost": {
+    "per_eval_s": 4.533,
+    "measured": true,
+    "serial": true,
+    "cached_solver": true,
+    "n_rows": 5,
+    "overhead": {},
+    "includes_overhead": true,
+    "source": "section_clock (sec8_composite, 5 arms, serial)",
+    "generic_model": {
+     "per_eval_s": 2.4018333333333333,
+     "overhead": {
+      "bo": {
+       "a0": -0.768613782051283,
+       "a1": 0.31798878205128195,
+       "b0": 0.0,
+       "b1": 0.0,
+       "n_points": 3,
+       "linear_only": true
+      },
+      "ga": {
+       "a0": 2.2201362179487174,
+       "a1": -0.12419871794871787,
+       "b0": 0.0,
+       "b1": 0.0,
+       "n_points": 3,
+       "linear_only": true
+      }
+     },
+     "n_rows": 9
+    }
+   },
+   "budget_clamp": [
+    12,
+    240
+   ],
+   "targets_reached": {
+    "0.9": "bo-worst",
+    "0.95": "bo-worst",
+    "0.99": false
+   },
+   "targets_evals": {
+    "0.9": 85,
+    "0.95": 127
+   },
+   "targets_case": "sec13_twist2_chord2",
+   "refusal": {
+    "modes": [
+     {
+      "mode": "worst",
+      "n_cases": 4,
+      "mean_delta_p": 0.2008,
+      "median_delta_p": 0.1909,
+      "n_better": 4,
+      "wins": 20,
+      "pairs": 20,
+      "sign_p": 2e-06,
+      "per_case": {
+       "sec10_twist1": {
+        "delta_p": 0.2969,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 8.32
+       },
+       "sec13_twist2_chord2": {
+        "delta_p": 0.205,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 7.68
+       },
+       "sec8_cd": {
+        "delta_p": 0.1768,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 14.36
+       },
+       "sec8_composite": {
+        "delta_p": 0.1246,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 5.54
+       }
+      }
+     },
+     {
+      "mode": "worst_margin",
+      "n_cases": 4,
+      "mean_delta_p": 0.1993,
+      "median_delta_p": 0.192,
+      "n_better": 4,
+      "wins": 20,
+      "pairs": 20,
+      "sign_p": 2e-06,
+      "per_case": {
+       "sec10_twist1": {
+        "delta_p": 0.2848,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 7.92
+       },
+       "sec13_twist2_chord2": {
+        "delta_p": 0.2421,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 8.17
+       },
+       "sec8_cd": {
+        "delta_p": 0.1419,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 15.51
+       },
+       "sec8_composite": {
+        "delta_p": 0.1283,
+        "wins": "5/5",
+        "sign_p": 0.0625,
+        "median_gain_pct": 5.33
+       }
+      }
+     }
+    ],
+    "adopt": "worst",
+    "min_gain": 0.02,
+    "max_p": 0.05,
+    "n_cases": 4,
+    "reproducible_control": {
+     "sec8_cd": false
+    },
+    "why": "worst: 20/20 seed pairs better (sign test p=2e-06), 4/4 cases, mean progress +0.201"
+   }
+  }
+ },
+ "evidence": {
+  "ranking_wing": [
+   {
+    "budget": 10,
+    "slsqp": 5.0,
+    "sobol": 2.47,
+    "penalty": 5.22,
+    "bo-logcei": 2.44,
+    "ga": 3.67,
+    "random": 4.67,
+    "bo-logei": 2.17,
+    "bo-qmes": 2.67,
+    "bo-ucb": 3.67,
+    "gradient": 5.0
+   },
+   {
+    "budget": 20,
+    "bo-logcei": 1.0,
+    "slsqp": 3.33,
+    "ga": 4.13,
+    "random": 5.13,
+    "sobol": 3.6,
+    "penalty": 5.56,
+    "bo-logei": 1.5,
+    "bo-ucb": 2.5,
+    "bo-qmes": 3.0,
+    "gradient": 5.5
+   },
+   {
+    "budget": 30,
+    "bo-logcei": 1.0,
+    "slsqp": 3.22,
+    "sobol": 4.07,
+    "ga": 4.53,
+    "random": 4.8,
+    "penalty": 5.44,
+    "bo-logei": 1.83,
+    "bo-qmes": 2.0,
+    "bo-ucb": 2.17,
+    "gradient": 5.5
+   },
+   {
+    "budget": 40,
+    "bo-logcei": 1.0,
+    "slsqp": 3.11,
+    "sobol": 4.33,
+    "ga": 4.8,
+    "random": 5.2,
+    "penalty": 4.56,
+    "bo-logei": 2.0,
+    "bo-qmes": 2.33,
+    "bo-ucb": 1.67,
+    "gradient": 4.67
+   },
+   {
+    "budget": 60,
+    "bo-logcei": 1.22,
+    "slsqp": 3.11,
+    "sobol": 4.33,
+    "ga": 4.4,
+    "random": 5.67,
+    "penalty": 4.0,
+    "bo-ucb": 1.5,
+    "bo-logei": 1.83,
+    "bo-qmes": 3.17,
+    "gradient": 4.5
+   },
+   {
+    "budget": 80,
+    "bo-logcei": 1.22,
+    "slsqp": 2.89,
+    "sobol": 4.53,
+    "random": 5.4,
+    "ga": 4.33,
+    "penalty": 4.44,
+    "bo-ucb": 1.33,
+    "bo-logei": 2.0,
+    "bo-qmes": 3.17,
+    "gradient": 4.5
+   },
+   {
+    "budget": 120,
+    "bo-logcei": 1.56,
+    "slsqp": 2.89,
+    "sobol": 4.93,
+    "penalty": 4.22,
+    "ga": 3.8,
+    "random": 5.47,
+    "bo-ucb": 1.17,
+    "bo-logei": 2.17,
+    "bo-qmes": 3.17,
+    "gradient": 4.5
+   },
+   {
+    "budget": 160,
+    "ga": 3.22,
+    "bo-logcei": 1.33,
+    "random": 5.22,
+    "sobol": 5.11,
+    "slsqp": 3.0,
+    "penalty": 4.67,
+    "bo-ucb": 1.0,
+    "bo-logei": 2.0,
+    "bo-qmes": 3.0,
+    "gradient": 5.33
+   },
+   {
+    "budget": 240,
+    "ga": 3.5,
+    "bo-logcei": 1.75,
+    "sobol": 5.33,
+    "random": 5.5,
+    "penalty": 3.75,
+    "slsqp": 2.75,
+    "bo-logei": 1.5,
+    "bo-ucb": 1.5,
+    "bo-qmes": 3.0,
+    "gradient": 4.5
+   },
+   {
+    "budget": 320,
+    "bo-logcei": 1.0,
+    "slsqp": 2.0,
+    "ga": 3.5,
+    "sobol": 5.0,
+    "random": 5.0,
+    "penalty": 4.5
+   }
+  ],
+  "ranking_airfoil": [
+   {
+    "budget": 10,
+    "sobol": 2.25,
+    "ga": 1.5,
+    "random": 2.5,
+    "bo-logcei": 3.75,
+    "penalty": 5.5,
+    "slsqp": 5.5
+   },
+   {
+    "budget": 20,
+    "sobol": 2.5,
+    "ga": 1.75,
+    "random": 2.75,
+    "bo-logcei": 3.0,
+    "slsqp": 5.0,
+    "penalty": 6.0
+   },
+   {
+    "budget": 30,
+    "sobol": 2.5,
+    "ga": 2.5,
+    "random": 2.0,
+    "bo-logcei": 3.0,
+    "slsqp": 5.0,
+    "penalty": 6.0
+   },
+   {
+    "budget": 40,
+    "ga": 1.75,
+    "bo-logcei": 2.5,
+    "sobol": 3.0,
+    "random": 2.75,
+    "slsqp": 5.25,
+    "penalty": 5.75
+   },
+   {
+    "budget": 60,
+    "ga": 1.75,
+    "random": 2.75,
+    "bo-logcei": 2.25,
+    "sobol": 3.25,
+    "slsqp": 5.25,
+    "penalty": 5.75
+   },
+   {
+    "budget": 80,
+    "ga": 1.25,
+    "bo-logcei": 2.25,
+    "random": 3.25,
+    "sobol": 3.25,
+    "slsqp": 5.25,
+    "penalty": 5.75
+   },
+   {
+    "budget": 120,
+    "ga": 1.5,
+    "bo-logcei": 2.25,
+    "slsqp": 4.5,
+    "random": 3.5,
+    "sobol": 3.25,
+    "penalty": 6.0
+   },
+   {
+    "budget": 160,
+    "ga": 1.25,
+    "bo-logcei": 2.0,
+    "sobol": 3.0,
+    "random": 3.75,
+    "slsqp": 5.25,
+    "penalty": 5.75
+   }
+  ],
+  "cases": {
+   "sec8_cd": {
+    "dim": 8,
+    "kind": "airfoil",
+    "problem": "airfoil (section)",
+    "constrained": true,
+    "y_star": -0.004479,
+    "n_runs": 41,
+    "y_blind": -0.007509,
+    "n_blind": 10,
+    "span": 0.003031
+   },
+   "sec8_composite": {
+    "dim": 8,
+    "kind": "airfoil",
+    "problem": "airfoil (section)",
+    "constrained": true,
+    "y_star": 76.944744,
+    "n_runs": 75,
+    "y_blind": 53.239228,
+    "n_blind": 20,
+    "span": 23.705516
+   },
+   "sec10_twist1": {
+    "dim": 9,
+    "kind": "airfoil",
+    "problem": "airfoil (section)",
+    "constrained": true,
+    "y_star": 42.593749,
+    "n_runs": 40,
+    "y_blind": 30.566613,
+    "n_blind": 10,
+    "span": 12.027135
+   },
+   "sec13_twist2_chord2": {
+    "dim": 12,
+    "kind": "airfoil",
+    "problem": "airfoil (section)",
+    "constrained": true,
+    "y_star": 43.334689,
+    "n_runs": 50,
+    "y_blind": 30.704653,
+    "n_blind": 15,
+    "span": 12.630036
+   },
+   "car10_endplate": {
+    "dim": 10,
+    "kind": "wing",
+    "problem": "car rear wing + endplates",
+    "constrained": true,
+    "y_star": 1.768734,
+    "n_runs": 64,
+    "y_blind": 0.579302,
+    "n_blind": 16,
+    "span": 1.189432
+   },
+   "car7": {
+    "dim": 7,
+    "kind": "wing",
+    "problem": "car rear wing",
+    "constrained": true,
+    "y_star": 1.75029,
+    "n_runs": 85,
+    "y_blind": 0.481638,
+    "n_blind": 16,
+    "span": 1.268652
+   },
+   "aircraft6": {
+    "dim": 6,
+    "kind": "wing",
+    "problem": "free planform (aircraft)",
+    "constrained": true,
+    "y_star": 30.913155,
+    "n_runs": 73,
+    "y_blind": 17.327677,
+    "n_blind": 16,
+    "span": 13.585478
+   },
+   "wing3": {
+    "dim": 3,
+    "kind": "wing",
+    "problem": "trim wing",
+    "constrained": false,
+    "y_star": 35.697158,
+    "n_runs": 76,
+    "y_blind": 35.070071,
+    "n_blind": 16,
+    "span": 0.627086
+   },
+   "tail14": {
+    "dim": 14,
+    "kind": "wing",
+    "problem": "tail + winglet + t/c [free height, designed tail + tip device]",
+    "constrained": true,
+    "y_star": 40.632329,
+    "n_runs": 64,
+    "y_blind": 33.447329,
+    "n_blind": 16,
+    "span": 7.184999
+   },
+   "tandemvlm12": {
+    "dim": 12,
+    "kind": "wing",
+    "problem": "tandem (nonplanar) + winglets",
+    "constrained": false,
+    "y_star": 29.154325,
+    "n_runs": 72,
+    "y_blind": 25.6641,
+    "n_blind": 16,
+    "span": 3.490225
+   },
+   "tail10_designed": {
+    "dim": 10,
+    "kind": "wing",
+    "problem": "tail [designed tail + tip device]",
+    "constrained": true,
+    "y_star": 34.921488,
+    "n_runs": 64,
+    "y_blind": 32.97248,
+    "n_blind": 16,
+    "span": 1.949008
+   },
+   "hydro8_winglet": {
+    "dim": 8,
+    "kind": "wing",
+    "problem": "hydrofoil + winglet",
+    "constrained": true,
+    "y_star": 36.50597,
+    "n_runs": 60,
+    "y_blind": 28.366594,
+    "n_blind": 16,
+    "span": 8.139376
+   },
+   "winglet5": {
+    "dim": 5,
+    "kind": "wing",
+    "problem": "winglet",
+    "constrained": false,
+    "y_star": 39.358952,
+    "n_runs": 68,
+    "y_blind": 35.81931,
+    "n_blind": 16,
+    "span": 3.539643
+   },
+   "hydro6": {
+    "dim": 6,
+    "kind": "wing",
+    "problem": "hydrofoil",
+    "constrained": true,
+    "y_star": 33.377629,
+    "n_runs": 60,
+    "y_blind": 27.05037,
+    "n_blind": 16,
+    "span": 6.327259
+   },
+   "hydro13_elev": {
+    "dim": 13,
+    "kind": "wing",
+    "problem": "hydrofoil + elevator [designed elevator + tip device]",
+    "constrained": true,
+    "y_star": 30.189125,
+    "n_runs": 48,
+    "y_blind": 23.01357,
+    "n_blind": 16,
+    "span": 7.175555
+   },
+   "tandem10": {
+    "dim": 10,
+    "kind": "wing",
+    "problem": "tandem",
+    "constrained": false,
+    "y_star": 26.196433,
+    "n_runs": 56,
+    "y_blind": 24.136787,
+    "n_blind": 16,
+    "span": 2.059646
+   },
+   "winglet7_blend": {
+    "dim": 7,
+    "kind": "wing",
+    "problem": "winglet, blended into the wing (span-capped)",
+    "constrained": false,
+    "y_star": 39.083965,
+    "n_runs": 56,
+    "y_blind": 35.779487,
+    "n_blind": 16,
+    "span": 3.304478
+   },
+   "wing5_tc": {
+    "dim": 5,
+    "kind": "wing",
+    "problem": "wing t/c + sweep",
+    "constrained": false,
+    "y_star": 37.567665,
+    "n_runs": 56,
+    "y_blind": 34.233577,
+    "n_blind": 16,
+    "span": 3.334088
+   },
+   "tail5": {
+    "dim": 5,
+    "kind": "wing",
+    "problem": "tail",
+    "constrained": true,
+    "y_star": 34.772161,
+    "n_runs": 48,
+    "y_blind": 33.090207,
+    "n_blind": 16,
+    "span": 1.681954
+   }
+  }
+ }
+}

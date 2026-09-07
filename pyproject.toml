@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aerobo"
+version = "1.0.0"
+description = "Conceptual aircraft design as a sequence of questions: mission, aerofoil, wing, results, controls, flight. Bayesian optimisation over real aerodynamics, then a six-degree-of-freedom flight simulator to fly the answer."
+readme = "README.md"
+authors = [{ name = "Bartolome Cabrer" }]
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+keywords = ["aerodynamics", "aircraft design", "bayesian optimisation", "xfoil", "lifting line", "vortex lattice", "flight simulation"]
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: OS Independent",
+]
+# The lean runtime set. The exact, cross-platform pins the launcher installs
+# are in installer/requirements-core.txt; keep the two in step.
+dependencies = [
+    "nicegui",
+    "plotly",
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "pymoo",
+    "pywebview ; sys_platform != 'linux'",
+]
+
+[project.optional-dependencies]
+# The Bayesian-optimisation stack. Optional because PyTorch publishes no
+# wheel for Intel Macs or for macOS 13 and older; every other optimiser runs
+# without it (see INSTALL.md).
+bo = ["torch", "botorch", "gpytorch"]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/TomyCabrer/AeroBO"
+Issues = "https://github.com/TomyCabrer/AeroBO/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: tests that drive the real XFOIL binary and can take more than ~5 s",
+]

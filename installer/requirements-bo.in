@@ -1,0 +1,14 @@
+# The Bayesian-optimisation stack, locked apart from the rest.
+#
+# This is the one part of the app that a supported machine can legitimately
+# fail to install, so it is not allowed to take the core install down with
+# it. See requirements-core.in for why (no macOS x86_64 torch wheel since
+# 2.2.2; the arm64 wheel is tagged macosx_14_0, i.e. Sonoma or newer).
+#
+# Compiled against requirements-core.txt as a constraint, so the shared
+# packages (numpy, scipy, ...) resolve to the SAME versions the core lock
+# already pinned rather than a second, conflicting set.
+
+botorch==0.18.1
+gpytorch==1.15.2
+torch==2.12.1

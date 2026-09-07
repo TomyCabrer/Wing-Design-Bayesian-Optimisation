@@ -1,0 +1,38 @@
+# What the AeroBO desktop app needs at run time — the LEAN set, at the
+# versions this shell was actually developed and tested against.
+#
+# NOT pyproject's dependency list. That list is the research environment
+# (streamlit for the V1 shell, smt for multi-fidelity, pandas underneath
+# streamlit) and costs ~285 MB the V4 app never imports: `streamlit` is
+# reached by gui/app.py alone, and `smt` only by optimize/mf.py, which
+# nothing in api.py or the shell calls.
+#
+# WHY EXACT PINS. The shell reaches into NiceGUI internals — v4/app.py's
+# _only_the_root_page_is_a_page() replaces `nicegui.app.exception_handlers`
+# 404 entry — so a minor bump is a real risk, not a theoretical one. A user
+# downloading this in a year gets the stack the screenshots were taken on.
+#
+# WHY TWO FILES. The BO stack (torch) is locked separately in
+# requirements-bo.in because it is the ONLY part that a supported machine
+# can fail to install: PyTorch has published no macOS x86_64 wheel since
+# 2.2.2, and its arm64 wheel is tagged macosx_14_0, so an Intel Mac and a
+# Mac on Ventura or older both have nowhere to get it. api.py imports
+# `optimize.bo` inside the function that runs it, so the shell starts fine
+# without it and every non-BO optimiser (GA, SLSQP, DOE, penalty) works.
+# The launcher installs this file first and MUST succeed; it installs the
+# BO file second and, if that fails, says so and carries on.
+#
+# Compile with installer/lock.sh, never by hand.
+
+nicegui==3.14.0           # the shell itself; 3.x page/router API
+plotly==6.9.0             # every chart in stages 4 and 7
+numpy==2.4.6
+scipy==1.17.1             # LLT/VLM linear solves, SLSQP
+matplotlib==3.11.0        # optimize/metrics.py's convergence plot (lazy)
+pymoo==0.6.2              # the GA baseline
+
+# The BO stack is NOT here — see requirements-bo.in.
+
+# native window (macOS/Windows). Linux runs in the browser: pywebview needs
+# GTK/WebKit system packages there that we cannot install for the user.
+pywebview==6.2.1 ; sys_platform != 'linux'

@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "thick": [
+      0.1056325998011768,
+      0.21432432171337823
+    ],
+    "clmax": [
+      0.963704,
+      1.68333
+    ],
+    "ldmax": [
+      46.17572842998586,
+      124.4220413437041
+    ],
+    "ldcr": [
+      44.66509720593868,
+      81.66210494651406
+    ],
+    "astall": [
+      9.620000000000001,
+      19.5
+    ],
+    "cm": [
+      0.0004187519136576385,
+      0.07552540137206286
+    ]
+  },
+  "sha": "box-sobol-a2415-n282-seed12345",
+  "n_records": 282,
+  "preset": "gdp-sweep",
+  "source": "design box (Sobol) of anchor 2415 \u2014 a DONOR band, held out of the 2412 search (PREREG_SESSION47.md \u00a7E), NOT the library screen",
+  "percentiles": [
+    2.0,
+    98.0
+  ],
+  "probe": {
+    "n_requested": 384,
+    "n_scoreable": 282,
+    "wall_s": 268.6,
+    "refusal_reasons": {
+      "cl_design not bracketed by the pre-stall monotone branch (se": 46,
+      "cl_max censored (still rising at the last converged alpha) =": 29,
+      "infeasible: not scored": 14,
+      "unconvergeable section (< 3 converged XFOIL points) = failed": 13
+    },
+    "seed": 12345,
+    "censored": "refuse",
+    "anchor": "2415"
+  },
+  "anchor": "2415"
+}
