@@ -74,28 +74,52 @@ import numpy as np
 #: does not include the binary, so which one answers cannot change a result.
 _HOMEBREW_XFOIL = "/opt/homebrew/bin/xfoil"
 
-#: The XFOIL every published run was produced on, shipped with the app for
-#: Apple silicon, where there is nothing to install: Homebrew has no xfoil
-#: formula and conda-forge no build, so a fresh Mac had no XFOIL at all. It is
-#: that exact binary plus the six libraries it links, rewritten to load from
-#: beside it (bin/macos-arm64/README.md). It comes BEFORE PATH on purpose: the
-#: same source rebuilt with today's toolchain is not bit-identical, and on
-#: NACA 0012 at Re 2e5 it hangs where this one converges in 3 s.
-_BUNDLED_XFOIL = (Path(__file__).resolve().parents[2]
-                  / "bin" / "macos-arm64" / "xfoil")
+#: The XFOIL shipped with the app, one folder per machine that has nothing to
+#: install: Homebrew has no xfoil formula and conda-forge no build, so a fresh
+#: Mac had no XFOIL at all, and Windows never had a package. Linux is not
+#: here: `apt install xfoil` is the real thing.
+#:
+#: * macos-arm64 -- the exact binary every published run was produced on,
+#:   plus the six libraries it links, rewritten to load from beside it.
+#: * macos-x86_64 -- the same source built for Intel, statically linked.
+#: * windows -- Drela's own xfoil.exe from the MIT page.
+#:
+#: They come BEFORE PATH on purpose: the same source rebuilt with today's
+#: toolchain is not bit-identical to the published binary, and on NACA 0012 at
+#: Re 2e5 it runs into the timeout where that one converges in 3 s. Each
+#: folder's README says what it is and how it was checked.
+_BUNDLED_DIR = Path(__file__).resolve().parents[2] / "bin"
+
+
+def _bundled_folder() -> str | None:
+    if sys.platform == "darwin":
+        return "macos-arm64" if platform.machine() == "arm64" else "macos-x86_64"
+    if os.name == "nt":
+        return "windows"            # 32-bit, so it runs on x64 and on ARM64
+    return None
 
 
 def bundled_xfoil() -> str | None:
-    """The shipped Apple-silicon XFOIL, runnable, or None on any other machine."""
-    if (sys.platform != "darwin" or platform.machine() != "arm64"
-            or not _BUNDLED_XFOIL.exists()):
+    """The XFOIL shipped for this machine, runnable, or None where none is."""
+    folder = _bundled_folder()
+    if folder is None:
         return None
-    # A zip downloaded through a browser marks every file quarantined, and a
-    # quarantined unsigned binary does not FAIL: it blocks on a Gatekeeper
-    # prompt nobody sees, so every polar times out into an empty result.
-    subprocess.run(["xattr", "-dr", "com.apple.quarantine",
-                    str(_BUNDLED_XFOIL.parent)], capture_output=True)
-    return str(_BUNDLED_XFOIL)
+    exe = _BUNDLED_DIR / folder / ("xfoil.exe" if os.name == "nt" else "xfoil")
+    if not exe.exists():
+        return None
+    # A zip downloaded through a browser marks every file as downloaded, and a
+    # quarantined unsigned binary does not FAIL on a Mac: it blocks on a
+    # Gatekeeper prompt nobody sees, so every polar times out into an empty
+    # result. Windows keeps the same mark in a Zone.Identifier stream.
+    if sys.platform == "darwin":
+        subprocess.run(["xattr", "-dr", "com.apple.quarantine",
+                        str(exe.parent)], capture_output=True)
+    else:
+        try:
+            os.remove(str(exe) + ":Zone.Identifier")
+        except OSError:
+            pass
+    return str(exe)
 
 
 DEFAULT_XFOIL_BIN = (os.environ.get("AEROBO_XFOIL_BIN") or bundled_xfoil()
