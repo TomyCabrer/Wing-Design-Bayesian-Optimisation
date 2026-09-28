@@ -97,9 +97,10 @@ tables in `data/airfoils`, and so do the results, controls and flight stages.
 
 | | |
 |---|---|
-| macOS | `brew install xfoil` |
+| Apple-silicon Mac | nothing to do — the app ships its own copy in `bin/macos-arm64/`, the same binary every published result was produced with |
+| Intel Mac | there is no package (no Homebrew formula, no conda-forge build): build it from [the MIT source](https://web.mit.edu/drela/Public/web/xfoil/) with gfortran and XQuartz, and put `xfoil` in the app's `bin/` folder |
 | Linux | `sudo apt install xfoil` |
-| Windows | download `xfoil.exe` from [web.mit.edu/drela/Public/web/xfoil](https://web.mit.edu/drela/Public/web/xfoil/) and put it in the app's `bin/` folder |
+| Windows | download `XFOIL6.99.zip` from [web.mit.edu/drela/Public/web/xfoil](https://web.mit.edu/drela/Public/web/xfoil/) and put the `xfoil.exe` inside it in the app's `bin/` folder |
 
 You can also point the app at a copy anywhere: set `AEROBO_XFOIL_BIN` to its
 full path, or drop the binary in `bin/` inside the app folder, which the

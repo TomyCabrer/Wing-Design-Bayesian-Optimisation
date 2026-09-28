@@ -72,9 +72,10 @@ def find_xfoil() -> str | None:
     """Where this machine's XFOIL is, or None.
 
     Same order the solver itself uses (``aerobo.xfoil_run``): an explicit
-    ``AEROBO_XFOIL_BIN`` wins, then ``PATH``. The extra place checked here is
-    ``bin/xfoil`` inside the downloaded copy, so a user who cannot install
-    system-wide can drop the binary next to the app and be found.
+    ``AEROBO_XFOIL_BIN`` wins, then the copy shipped for Apple silicon, then
+    ``PATH``. The extra place checked here is ``bin/xfoil`` inside the
+    downloaded copy, so a user who cannot install system-wide can drop the
+    binary next to the app and be found.
     """
     env = os.environ.get("AEROBO_XFOIL_BIN")
     if env and Path(env).exists():
@@ -83,12 +84,19 @@ def find_xfoil() -> str | None:
     if local.exists():
         os.environ["AEROBO_XFOIL_BIN"] = str(local)   # so the solver sees it
         return str(local)
+    bundled = APP_ROOT / "bin" / "macos-arm64" / "xfoil"
+    if sys.platform == "darwin" and platform.machine() == "arm64" \
+            and bundled.exists():
+        return str(bundled)
     return shutil.which("xfoil")
 
 
 def _xfoil_hint() -> str:
     if sys.platform == "darwin":
-        return "brew install xfoil"
+        # Apple silicon never gets here (the shipped copy is found above).
+        # There is no Homebrew formula and no conda-forge build.
+        return ("build it from web.mit.edu/drela/Public/web/xfoil/ (needs "
+                "gfortran and XQuartz) and put it in " + str(APP_ROOT / "bin"))
     if sys.platform.startswith("linux"):
         return "sudo apt install xfoil   (or build from web.mit.edu/drela/Public/web/xfoil/)"
     return ("download xfoil.exe from web.mit.edu/drela/Public/web/xfoil/ and put it in "

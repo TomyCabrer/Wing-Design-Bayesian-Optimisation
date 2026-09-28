@@ -53,9 +53,11 @@ import hashlib
 import json
 import math as _math
 import os
+import platform
 import re as _re
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
 import uuid
@@ -71,7 +73,32 @@ import numpy as np
 #: raising XfoilError for a path that was never going to exist. The cache key
 #: does not include the binary, so which one answers cannot change a result.
 _HOMEBREW_XFOIL = "/opt/homebrew/bin/xfoil"
-DEFAULT_XFOIL_BIN = (os.environ.get("AEROBO_XFOIL_BIN")
+
+#: The XFOIL every published run was produced on, shipped with the app for
+#: Apple silicon, where there is nothing to install: Homebrew has no xfoil
+#: formula and conda-forge no build, so a fresh Mac had no XFOIL at all. It is
+#: that exact binary plus the six libraries it links, rewritten to load from
+#: beside it (bin/macos-arm64/README.md). It comes BEFORE PATH on purpose: the
+#: same source rebuilt with today's toolchain is not bit-identical, and on
+#: NACA 0012 at Re 2e5 it hangs where this one converges in 3 s.
+_BUNDLED_XFOIL = (Path(__file__).resolve().parents[2]
+                  / "bin" / "macos-arm64" / "xfoil")
+
+
+def bundled_xfoil() -> str | None:
+    """The shipped Apple-silicon XFOIL, runnable, or None on any other machine."""
+    if (sys.platform != "darwin" or platform.machine() != "arm64"
+            or not _BUNDLED_XFOIL.exists()):
+        return None
+    # A zip downloaded through a browser marks every file quarantined, and a
+    # quarantined unsigned binary does not FAIL: it blocks on a Gatekeeper
+    # prompt nobody sees, so every polar times out into an empty result.
+    subprocess.run(["xattr", "-dr", "com.apple.quarantine",
+                    str(_BUNDLED_XFOIL.parent)], capture_output=True)
+    return str(_BUNDLED_XFOIL)
+
+
+DEFAULT_XFOIL_BIN = (os.environ.get("AEROBO_XFOIL_BIN") or bundled_xfoil()
                      or shutil.which("xfoil") or _HOMEBREW_XFOIL)
 DEFAULT_CACHE_DIR = Path(__file__).resolve().parents[2] / "results" / "xfoil_cache"
 
@@ -163,7 +190,9 @@ def run_xfoil_script(
             cwd=str(cwd),
         )
     except FileNotFoundError as exc:
-        raise XfoilError(f"XFOIL binary not found: {xfoil_bin}") from exc
+        raise XfoilError(f"XFOIL binary not found: {xfoil_bin} "
+                         "(INSTALL.md, \"no XFOIL found\", says how to "
+                         "add one)") from exc
     except PermissionError as exc:
         raise XfoilError(f"XFOIL binary not executable: {xfoil_bin}") from exc
 
