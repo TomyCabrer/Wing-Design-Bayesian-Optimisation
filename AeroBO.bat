@@ -17,6 +17,10 @@ set "CORE=%APP_DIR%\installer\requirements-core.txt"
 set "BO=%APP_DIR%\installer\requirements-bo.txt"
 set "STAMP=%VENV%\.aerobo-stamp"
 
+REM Opened straight from the zip, Windows copies out this one file and runs it
+REM alone, without the folder it installs from.
+if not exist "%CORE%" goto :notunzipped
+
 REM Everything uv writes goes inside this folder - its wheel cache, any Python
 REM it downloads, its receipt - so that deleting the folder is the whole
 REM uninstall. The installs below also pass --no-cache: the cache is a
@@ -43,9 +47,15 @@ if not defined UV goto :nouv
 REM ---------------------------------------------------------------- venv ---
 set "REINSTALL=0"
 if /I "%~1"=="--reinstall" set "REINSTALL=1"
+REM Windows on ARM (a Windows VM on an Apple-silicon Mac, a Surface Pro X) gets
+REM the x64 Python, which Windows 11 runs by emulation: httptools and PyTorch
+REM publish no ARM wheel for it, so a native ARM install stops at httptools.
+set "PY=3.11"
+if /I "%PROCESSOR_ARCHITECTURE%"=="ARM64" set "PY=cpython-3.11-windows-x86_64-none"
+if /I "%PROCESSOR_ARCHITEW6432%"=="ARM64" set "PY=cpython-3.11-windows-x86_64-none"
 if not exist "%VENV%\Scripts\python.exe" (
   echo   building the environment ^(Python 3.11^)
-  "%UV%" venv --python 3.11 "%VENV%" >nul || goto :novenv
+  "%UV%" venv --python %PY% "%VENV%" >nul || goto :novenv
   set "REINSTALL=1"
 )
 
@@ -87,6 +97,15 @@ exit /b 1
 :novenv
 echo.
 echo   AeroBO could not start: could not create the Python environment.
+echo.
+pause
+exit /b 1
+
+:notunzipped
+echo.
+echo   AeroBO could not start: it was run from inside the zip, so the rest of
+echo   the app is not next to it. Right-click the zip, choose Extract All, then
+echo   double-click AeroBO in the folder that makes.
 echo.
 pause
 exit /b 1
