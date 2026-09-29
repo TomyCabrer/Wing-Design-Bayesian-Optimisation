@@ -14122,6 +14122,15 @@ def airfoil_chord_orders() -> dict:
 UIUC_DB_DIR = Path(__file__).resolve().parents[2] / "data" / "airfoils" / "uiuc"
 SCREEN_CHECKPOINT = (Path(__file__).resolve().parents[2] / "results"
                      / "airfoil_screen_checkpoint.json")
+#: ...and the copy the app SHIPS with, because ``results/`` is not in a
+#: download. Without it the library pass of every section screen — the one
+#: the shell labels "a cache read, no XFOIL yet" — ran both XFOIL sweeps on
+#: all 2174 sections before the first progress callback: 32 minutes on an
+#: Apple-silicon Mac, longer on Windows, behind an indeterminate bar. Every
+#: metric it computed was then overwritten from the branch sidecar anyway.
+#: Copied into ``results/`` on first use, so the screen still writes there.
+SCREEN_CHECKPOINT_TRACKED = (Path(__file__).resolve().parents[2] / "records"
+                             / "airfoil_screen_checkpoint.json")
 #: name -> closed-loop coords sidecar. The screen ranks entirely from the
 #: checkpoint metrics, but drawing a winner's shape needs its coordinates, and
 #: the .dat database lives on an iCloud-evicted volume where a cold read blocks
@@ -14371,6 +14380,14 @@ def screen_checkpoint(prob) -> Path:
 
     pt = screen_point(prob)
     if pt == LEGACY_SCREEN_POINT:
+        if not SCREEN_CHECKPOINT.exists() and SCREEN_CHECKPOINT_TRACKED.exists():
+            try:
+                SCREEN_CHECKPOINT.parent.mkdir(parents=True, exist_ok=True)
+                tmp = SCREEN_CHECKPOINT.with_suffix(".seed.tmp")
+                tmp.write_bytes(SCREEN_CHECKPOINT_TRACKED.read_bytes())
+                tmp.replace(SCREEN_CHECKPOINT)
+            except OSError:
+                pass            # a read-only copy screens for real, as before
         return SCREEN_CHECKPOINT
     tag = hashlib.sha256(
         json.dumps(pt, sort_keys=True).encode()).hexdigest()[:12]

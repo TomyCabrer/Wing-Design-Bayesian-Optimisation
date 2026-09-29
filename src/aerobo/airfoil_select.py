@@ -1231,6 +1231,9 @@ def screen_database(
                     if verbose:
                         print(f"screen cancelled at {i + 1}/{len(todo)}",
                               flush=True)
+                    # leaving the ``with`` alone waits for EVERY queued
+                    # section, so Stop used to finish the whole screen first
+                    ex.shutdown(wait=True, cancel_futures=True)
                     break
     if checkpoint and done_since_write:
         _atomic_write_json(checkpoint, cache)
@@ -1238,8 +1241,11 @@ def screen_database(
     # ONLY records that belong to this point. A cancelled screen leaves the
     # rest of the database sitting in the checkpoint at its old point, and
     # ranking those beside freshly-screened ones would compare metrics from
-    # two different Reynolds numbers in one table.
-    records = {p.stem: cache[p.stem] for p in files if at_point(p.stem)}
+    # two different Reynolds numbers in one table. Each record's ``path`` is
+    # the file on THIS machine: a checkpoint shipped with the app was written
+    # on another one, and its paths name that machine's folders.
+    records = {p.stem: dict(cache[p.stem], path=str(p))
+               for p in files if at_point(p.stem)}
     # When trusting the checkpoint, its cached ``eligible`` flags were baked at
     # whatever gates that screen ran — re-derive eligibility from the raw
     # metrics at THIS prob's tc_min/cm_max so a warm checkpoint re-ranks
